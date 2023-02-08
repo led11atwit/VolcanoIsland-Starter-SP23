@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float input;
 
     private Rigidbody2D rb;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         input = Input.GetAxisRaw("Horizontal");
+        if (input == 0) //not moving
+        {
+            anim.SetBool("isRunning", false);
+        } else
+        {
+            anim.SetBool("isRunning", true);
+        }
     }
 
     //called once per physics frame (usually 60fps)
@@ -37,7 +45,7 @@ public class Player : MonoBehaviour
     public void reset()
     {
         health = maxHealth;
-        Vector3 pos = new Vector3(0f, -2.5f, 0f);
+        Vector3 pos = new Vector3(0f, -3.8f, 0f);
         this.transform.position = pos;
         this.gameObject.SetActive(true);
     }

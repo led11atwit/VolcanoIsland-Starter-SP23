@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float minSpeed;
     public float maxSpeed;
 
+    public ParticleSystem hitEffect;
+
     private float speed;
 
 
@@ -37,9 +39,20 @@ public class Enemy : MonoBehaviour
             player.takeDamage(damage);
 
             //player the fireball explosion vfx
+            Instantiate(hitEffect, this.transform.position, Quaternion.identity);
 
             //remove the fireball from the scene
             Destroy(this.gameObject);
+        }
+        else if (col.tag == "Ground")
+        {
+
+            //player the fireball explosion vfx
+            Instantiate(hitEffect, this.transform.position, Quaternion.identity);
+
+            //remove the fireball from the scene
+            Destroy(this.gameObject);
+
         }
     }
 }
