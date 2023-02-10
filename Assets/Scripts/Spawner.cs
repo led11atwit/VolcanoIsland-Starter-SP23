@@ -24,6 +24,12 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //guard statement
+        if (GameManager.instance().gameOverCanvas.gameObject.activeSelf)
+        {
+            return;
+        }
+
         if (spawnTimer <= 0)
         {
             //do the spawn

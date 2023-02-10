@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     public Player player;
     public Canvas gameOverCanvas;
+    public Text healthText;
+    public TMP_Text 
 
     private Spawner spawner;
 
@@ -34,14 +40,25 @@ public class GameManager : MonoBehaviour
     {
         GameObject go = GameObject.FindGameObjectWithTag("Spawner");
         spawner = go.GetComponent<Spawner>();
-        player.reset();
-        spawner.reset();
-        gameOverCanvas.gameObject.SetActive(false);
+        onRestartClick();
     }
 
     public void onRestartClick()
     {
+        player.reset();
+        spawner.reset();
+        healthText.text = "x" + player.maxHealth;
+        gameOverCanvas.gameObject.SetActive(false);
+    }
 
+    public void updateHealthText(int value)
+    {
+        healthText.text = "x" + value;
+    }
+
+    public void onMenuClick()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void gameOverCanvasSwitch(bool state)

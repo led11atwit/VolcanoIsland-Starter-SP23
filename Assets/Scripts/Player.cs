@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     public void takeDamage(int value)
     {
         health -= value;
+        GameManager.instance().updateHealthText(health);
 
         if (health <= 0)
         {
