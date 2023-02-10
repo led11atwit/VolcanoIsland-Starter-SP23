@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
 
     public Player player;
+    public Canvas gameOverCanvas;
+
     private Spawner spawner;
 
     void Start()
@@ -34,6 +36,17 @@ public class GameManager : MonoBehaviour
         spawner = go.GetComponent<Spawner>();
         player.reset();
         spawner.reset();
+        gameOverCanvas.gameObject.SetActive(false);
+    }
+
+    public void onRestartClick()
+    {
+
+    }
+
+    public void gameOverCanvasSwitch(bool state)
+    {
+        gameOverCanvas.gameObject.SetActive(state);
     }
 
 }

@@ -33,6 +33,14 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isRunning", true);
         }
+
+        if (input > 0)//moving to the right
+        {
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        } else if (input < 0) //moving to the left
+        {
+            transform.eulerAngles = new Vector3(0f, 180f, 0f);
+        }
     }
 
     //called once per physics frame (usually 60fps)
@@ -60,6 +68,11 @@ public class Player : MonoBehaviour
             //play a sound/music
             //play a particle system
             //show the game over screen
+
+            //enable the game over canvas
+            GameManager.instance().gameOverCanvasSwitch(true);
+
+            //distable the player object
             this.gameObject.SetActive(false);
         }
     }
